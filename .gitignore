@@ -1,0 +1,7 @@
+*.suo
+*.user
+HyveLog/bin
+HyveLog/obj
+HyveLogTest/obj
+HyveLogTest/bin
+packages
