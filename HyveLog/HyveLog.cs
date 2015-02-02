@@ -9,6 +9,7 @@ namespace HyveLog
     public class HyveLog
     {
         public enum ApplicationType { Console, Service }
+        private string logPath = String.Empty;
 
         private ApplicationType _type;
         /// <summary>
@@ -34,12 +35,13 @@ namespace HyveLog
             {
                 case ApplicationType.Console:
                 {
-                    
+                    Console.WriteLine(Message);
                     break;
                 }
                 case ApplicationType.Service:
                 {
-                    
+                    //TODO determine logging location
+                    File.WriteAllText(Path.Combine(logPath, "ErrorLog.txt"), Message);
                     break;
                 }
                 default:
