@@ -17,7 +17,7 @@ namespace HyveLogTest
             timer.Elapsed += timer_Elapsed;
             timer.Enabled = true;
             //Console.WriteLine("Hello World");
-            var logger = new Logger(Logger.ApplicationType.Service);
+            var logger = new Logger(Logger.LogTarget.File);
             logger.Log("Test error message");
             Console.Read();
         }
