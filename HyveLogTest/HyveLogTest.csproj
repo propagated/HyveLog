@@ -7,8 +7,8 @@
     <ProjectGuid>{8AEC69B5-E78F-4782-A049-CB807B000934}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Square9.DocuSignRetriever</RootNamespace>
-    <AssemblyName>Square9.DocuSignRetriever</AssemblyName>
+    <RootNamespace>HyveLogTester</RootNamespace>
+    <AssemblyName>HyveLog.Tester</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -55,6 +55,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HyveLog\HyveLog.csproj">
+      <Project>{9d2059de-a9dd-4cd0-a888-c34929715ac2}</Project>
+      <Name>HyveLog</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

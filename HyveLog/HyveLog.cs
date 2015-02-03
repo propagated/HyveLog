@@ -6,7 +6,7 @@ using System.IO;
 
 namespace HyveLog
 {
-    public class HyveLog
+    public class Logger
     {
         public enum ApplicationType { Console, Service }
         private string logPath = String.Empty;
@@ -15,7 +15,7 @@ namespace HyveLog
         /// <summary>
         /// Initialize HyveLog and let it determine where to log.
         /// </summary>
-        public HyveLog()
+        public Logger()
         {
             _type = SetApplicationType();
         }
@@ -23,7 +23,7 @@ namespace HyveLog
         /// Initialize HyveLog with a specified type of logging
         /// </summary>
         /// <param name="Type"></param>
-        public HyveLog(ApplicationType Type)
+        public Logger(ApplicationType Type)
         {
             _type = Type;
         }
@@ -58,20 +58,14 @@ namespace HyveLog
         /// <returns></returns>
         private ApplicationType SetApplicationType()
         {
-            return ApplicationType.Console;
+            if (Environment.UserInteractive)
+            {
+                return ApplicationType.Console;
+            }
+            else
+            {
+                return ApplicationType.Service;
+            }
         }
-    }
-
-    internal static class Logger
-    {
-        public static void WriteToConsole(String Message)
-        {
-            Console.WriteLine("Hello Log. " + Message);
-        }
-        public static void WriteToErrorLog(String Message)
-        {
-            File.WriteAllText("LogTest\\LogTest.txt","Hello Log. " + Message);
-        }
-
     }
 }

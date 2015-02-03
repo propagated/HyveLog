@@ -11,7 +11,7 @@ namespace HyveLogTest
     {
         static string applicationName = System.Diagnostics.Process.GetCurrentProcess().ProcessName.Replace(".vshost", "");
         static string applicationPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-        static string applicationTitle = "HyveLogTest";
+        static string applicationTitle = "HyveLogTest2";
 
         static void Main(string[] args)
         {

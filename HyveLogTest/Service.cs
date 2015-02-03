@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HyveLog;
+
+using System.Timers;
 
 namespace HyveLogTest
 {
@@ -10,8 +13,19 @@ namespace HyveLogTest
     {
         public void Run()
         {
-            Console.WriteLine("Hello World");
+            var timer = new Timer(500);
+            timer.Elapsed += timer_Elapsed;
+            timer.Enabled = true;
+            //Console.WriteLine("Hello World");
+            var logger = new Logger(Logger.ApplicationType.Service);
+            logger.Log("Test error message");
             Console.Read();
+        }
+
+        void timer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            var logger = new Logger();
+            logger.Log("test error message");
         }
 
 
