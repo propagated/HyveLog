@@ -45,7 +45,6 @@ namespace HyveLog
         {
             _logPath = LogFilePath;
         }
-        
 
         public void Log(String Message)
         {
@@ -59,6 +58,12 @@ namespace HyveLog
                 }
                 case LogTarget.File:
                 {
+                    //default to user directory\errors if no path specified
+                    if (String.IsNullOrEmpty(_logPath))
+                    {
+                        _logPath = GetDefaultPath();
+                    }
+                    _logPath = ValidatePath(_logPath);
                     WriteToLog.File(_logPath, Message);
                     break;
                 }
@@ -68,6 +73,38 @@ namespace HyveLog
                     break;
                 }
             }
+        }
+
+        public void Log(String Message, String FilePath)
+        {
+            _logPath = FilePath;
+            Log(Message);
+        }
+
+        private static String ValidatePath(String FilePath)
+        {
+            var FileDirectory = Path.GetDirectoryName(FilePath);
+            //check if directory exists
+            if (!Directory.Exists(FileDirectory))
+            {
+                Directory.CreateDirectory(FileDirectory);
+            }
+            //check if filename was specified
+            if (String.IsNullOrEmpty(Path.GetFileName(FilePath)))
+            {
+                FilePath = Path.Combine(FilePath, "ErrorLog.txt");
+            }
+            return FilePath;
+        }
+
+        /// <summary>
+        /// Get the location of the users appdata directory and create a default folder to write a file to.
+        /// </summary>
+        /// <returns></returns>
+        private static String GetDefaultPath()
+        {
+            var UserPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Errors");
+            return UserPath;
         }
 
         /// <summary>
@@ -95,11 +132,6 @@ namespace HyveLog
         }
         public static void File(String FilePath, String Message)
         {
-            //check if directory
-            if (Directory.Exists(FilePath))
-            {
-                FilePath = Path.Combine(FilePath, "ErrorLog.txt");
-            }
             System.IO.File.AppendAllText(FilePath, Message);
         }
         public static void Both(String FilePath, String Message)
