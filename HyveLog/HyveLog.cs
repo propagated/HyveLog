@@ -13,6 +13,17 @@ namespace HyveLog
         private string _logPath = String.Empty;
         private LogTarget _type;
 
+        public String LogPath {
+            get
+            {
+                return _logPath;
+            }
+            set
+            {
+                _logPath = value;
+            }
+        }
+
         /// <summary>
         /// Initialize HyveLog and let it determine where to log.
         /// </summary>
@@ -29,11 +40,12 @@ namespace HyveLog
             _type = Type;
         }
         /// <summary>
-        /// Initialize HyveLog with a target logfile.
+        /// Initialize HyveLog with a target logfile. Puts logger into File mode.
         /// </summary>
         /// <param name="LogFilePath"></param>
         public Logger(String LogFilePath) : this()
         {
+            _type = LogTarget.File;
             _logPath = LogFilePath;
         }
         /// <summary>
@@ -43,6 +55,7 @@ namespace HyveLog
         /// <param name="LogFilePath"></param>
         public Logger(LogTarget Type, String LogFilePath) : this(Type)
         {
+            _type = Type;
             _logPath = LogFilePath;
         }
 
@@ -108,7 +121,7 @@ namespace HyveLog
         }
 
         /// <summary>
-        /// determine calling assembly's type to target the log correctly.
+        /// determine calling assembly's type when not specified to target the log correctly.
         /// </summary>
         /// <returns></returns>
         private LogTarget SetApplicationType()
