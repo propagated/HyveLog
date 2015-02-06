@@ -2,6 +2,5 @@
 *.user
 HyveLog/bin
 HyveLog/obj
-HyveLogTest/obj
-HyveLogTest/bin
+HyveLogTest
 packages
