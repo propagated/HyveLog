@@ -45,7 +45,7 @@
   <ItemGroup>
     <Compile Include="HyveLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnitTests.cs" />
+    <Compile Include="Tests\UnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

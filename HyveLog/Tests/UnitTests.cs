@@ -1,24 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using HyveLog;
 
 using NUnit.Framework;
 
 namespace HyveLog.UnitTests
 {
-
     internal static class UnitTestSetup
     {
-
+        //methods to mock anything necessary
     }
 
     [TestFixture]
-    internal class TestSomething
+    internal class TestHyveLog
     {
         [TestFixtureSetUp, Description("")]
         public void InitTestFixture()
         {
-            //fires at load before any test
+            //fires once at load before any test
         }
         [TestFixtureTearDown]
         public void EndAllTests()
@@ -37,9 +37,14 @@ namespace HyveLog.UnitTests
         }
 
         [Test, Description("Write to File, no path passed. errors\\errorlog.txt will be created and written to in user\\appdata\\local folder.")]
-        public void TestGetSomeData()
-        {   
-            Assert.IsNotNull("");
+        public void TestConstructorNoParams()
+        {
+            var logger = new Logger();
+            var testMessage= "This is a Test Error Message";
+            logger.Log(testMessage);
+            Assert.IsTrue(System.IO.File.Exists(logger.LogPath));
+            Assert.AreEqual(testMessage, System.IO.File.ReadAllText(logger.LogPath));
+            //Assert.IsNotNull("");
         }
         [Test, Description("Write to File valid path.")]
         public void TestGetSomeData1()
