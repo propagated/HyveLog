@@ -24,6 +24,17 @@ namespace HyveLog
                 _logPath = value;
             }
         }
+        public String LogFileName 
+        { 
+            get
+            {
+                return Path.GetFileName(_logPath);
+            }
+            set
+            {
+                _logPath = Path.Combine(Path.GetDirectoryName(_logPath), value);
+            }
+        }
 
         /// <summary>
         /// Initialize HyveLog and let it determine where to log.
