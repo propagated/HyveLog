@@ -13,7 +13,8 @@ namespace HyveLog
         private string _logPath = String.Empty;
         private LogTarget _type;
 
-        public String LogPath {
+        public String LogFileFullPath 
+        {
             get
             {
                 return _logPath;
@@ -71,17 +72,13 @@ namespace HyveLog
                 }
                 case LogTarget.File:
                 {
-                    //default to user directory\errors if no path specified
-                    if (String.IsNullOrEmpty(_logPath))
-                    {
-                        _logPath = GetDefaultPath();
-                    }
                     _logPath = ValidatePath(_logPath);
                     WriteToLog.File(_logPath, Message);
                     break;
                 }
                 default:
                 {
+                    _logPath = ValidatePath(_logPath);
                     WriteToLog.Both(_logPath, Message);
                     break;
                 }
@@ -94,18 +91,20 @@ namespace HyveLog
             Log(Message);
         }
 
-        private static String ValidatePath(String FilePath)
+        private String ValidatePath(String FilePath)
         {
+            //default to user directory\errors if no path specified
+            if (String.IsNullOrEmpty(FilePath))
+            {
+                FilePath = GetDefaultPath();
+                _logPath = FilePath;
+            }
+
             var FileDirectory = Path.GetDirectoryName(FilePath);
             //check if directory exists
             if (!Directory.Exists(FileDirectory))
             {
                 Directory.CreateDirectory(FileDirectory);
-            }
-            //check if filename was specified
-            if (String.IsNullOrEmpty(Path.GetFileName(FilePath)))
-            {
-                FilePath = Path.Combine(FilePath, "ErrorLog.txt");
             }
             return FilePath;
         }
@@ -114,9 +113,9 @@ namespace HyveLog
         /// Get the location of the users appdata directory and create a default folder to write a file to.
         /// </summary>
         /// <returns></returns>
-        private static String GetDefaultPath()
+        private String GetDefaultPath()
         {
-            var UserPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Errors");
+            var UserPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Errors\\ErrorLog.txt");
             return UserPath;
         }
 
