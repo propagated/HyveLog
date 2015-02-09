@@ -113,7 +113,7 @@ namespace HyveLog
 
             var FileDirectory = Path.GetDirectoryName(FilePath);
             //check if directory exists
-            if (!Directory.Exists(FileDirectory))
+            if (!String.IsNullOrEmpty(FileDirectory) && !Directory.Exists(FileDirectory))
             {
                 Directory.CreateDirectory(FileDirectory);
             }
