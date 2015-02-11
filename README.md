@@ -7,7 +7,7 @@ A custom lightweight logging library designed for Hybrid Console/Service applica
 * Automatic determination if calling executable is running as a service or not, if logging location is not specified.
 
 ## Usage
-```
+```csharp
 //automatically determine logging mode
 var logger = new Logger();
 //change to write to both
