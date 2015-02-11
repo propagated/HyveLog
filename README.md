@@ -10,7 +10,7 @@ A custom lightweight logging library designed for Hybrid Console/Service applica
 ```csharp
 //automatically determine logging mode
 var logger = new Logger();
-//change to write to both
+//change to write to both the console and a file
 logger.LoggingMode = LogTarget.Both;
 //you can specify a filepath, default is to %userfolder%\appdata\Errors\errorlog.txt
 logger.LogFileFullPath = @"c:\errorLog.txt";
