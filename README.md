@@ -1,5 +1,4 @@
 # HyveLog #
-=======
 
 A custom lightweight logging library designed for Hybrid Console/Service applications written in .net.
 
@@ -22,4 +21,4 @@ logger.Log("Pod Seven Critical");
 ```
 
 ### More to Come
-Issues are tracking todos and future enhancements!
+Issues are tracking todos and future enhancements! The project uses NUnit for unit test coverage.
