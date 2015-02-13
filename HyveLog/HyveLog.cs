@@ -13,6 +13,17 @@ namespace HyveLog
         private string _logPath = String.Empty;
         private LogTarget _type;
 
+        public LogTarget LoggingMode 
+        { 
+            get 
+            { 
+                return _type; 
+            } 
+            set 
+            { 
+                _type = value; 
+            } 
+        }
         public String LogFileFullPath 
         {
             get

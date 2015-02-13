@@ -88,14 +88,16 @@ namespace HyveLog.UnitTests
             Assert.AreEqual(errorMessage, File.ReadAllText(logger.LogFileFullPath));
         }
         [Test, Description("Write to console")]
-        public void TestGetSomeData4()
+        public void TestWritingToConsole()
         {
-            var logger = new Logger(Logger.LogTarget.File);
-            var testMessage = "This is a Test Error Message";
-            logger.Log(testMessage);
-            Assert.IsNotNull("");
+            var logger = new Logger();
+            
+            using (StringWriter writer = new StringWriter())
+            {
+                Console.SetOut(writer);
+                logger.Log(errorMessage);
+                Assert.AreEqual(errorMessage + Environment.NewLine, writer.ToString());
+            }
         }
-
     }
-
 }
