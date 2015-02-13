@@ -19,8 +19,11 @@ logger.LogFileFullPath = @"errors\errorLog.txt";
 //finally, log your message!
 logger.Log("Pod Seven Critical");
 ```
-## License: MIT License
 
-### More to Come
+
+### More to Come 
 Issues are tracking todos and future enhancements! The project uses NUnit for unit test coverage.
 
+
+
+License: MIT License
