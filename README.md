@@ -1,4 +1,4 @@
-# HyveLog #
+# HyveLog  [![Build Status](https://travis-ci.org/propagated/HyveLog.svg?branch=master)](https://travis-ci.org/propagated/HyveLog)
 
 A custom lightweight logging library designed for Hybrid Console/Service applications written in .net.
 
