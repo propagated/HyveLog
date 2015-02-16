@@ -1,10 +1,10 @@
 # HyveLog  [![Build Status](https://travis-ci.org/propagated/HyveLog.svg?branch=master)](https://travis-ci.org/propagated/HyveLog)
 
-A custom lightweight logging library designed for Hybrid Console/Service applications written in .net.
+A lightweight logging library designed for .net applications that run in both Console and Windows Service modes.
 
 ## Features
-* Logging modes to console, text file or both with one method.
-* Automatic determination if calling executable is running as a service or not, if logging location is not specified.
+* Togglable logging mode-- to console, text file or both, all with one method.
+* Automatically determines if calling executable is running as a Console Application or Windows Serivce and logs appropriately.
 
 ## Usage
 ```csharp
@@ -22,7 +22,7 @@ logger.Log("Pod Seven Critical");
 
 
 ### More to Come 
-Issues are tracking todos and future enhancements! The project uses NUnit for unit test coverage.
+See issues for additional todos and planned future enhancements. The project uses NUnit for unit test coverage, and is currently being tested on travis-ci.org in a mono environment.
 
 
 
