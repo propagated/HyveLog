@@ -18,16 +18,21 @@ namespace HyveLog.UnitTests
     {
         const String errorMessage = "This is a test error message.";
 
-        const String relativePath = "errors\\errorlog.txt";
+        const String relativePath = @"errors\errorlog.txt";
         String defaultPath;
-        const String absolutePath = @"C:\Errors\errorlog.txt";
+        //String absolutePath = @"C:\Errors\errorlog.txt";
+        String absolutePath;
         const String logFile = "errorlog.txt";
 
         [TestFixtureSetUp, Description("")]
         public void InitTestFixture()
         {
-            //fires once at load before tests start
+            //set default relative path, use to set absolute path
             defaultPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Errors\\ErrorLog.txt");
+            //should be c:\\ or / in mono
+            absolutePath = Path.Combine(Path.GetPathRoot(defaultPath), relativePath);
+
+            //clear out test artifacts
             if (Directory.Exists(Path.GetDirectoryName(defaultPath)))
             {
                 File.Delete(defaultPath);

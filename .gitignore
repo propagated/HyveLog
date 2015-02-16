@@ -4,3 +4,4 @@ HyveLog/bin
 HyveLog/obj
 HyveLogTest
 packages
+*.nupkg
