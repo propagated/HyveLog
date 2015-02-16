@@ -166,7 +166,7 @@ namespace HyveLog
         }
         public static void File(String FilePath, String Message)
         {
-            System.IO.File.AppendAllText(FilePath, Message);
+            System.IO.File.AppendAllText(FilePath, Message + Environment.NewLine);
         }
         public static void Both(String FilePath, String Message)
         {
