@@ -30,7 +30,14 @@ namespace HyveLog.UnitTests
             //set default relative path, use to set absolute path
             defaultPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Errors\\ErrorLog.txt");
             //should be c:\\ or / in mono
-            absolutePath = Path.Combine(Path.GetPathRoot(defaultPath), relativePath);
+            if (Path.GetPathRoot(defaultPath).Equals('/'))
+            {
+                absolutePath = Path.Combine(Path.GetPathRoot(defaultPath), "errors/errorlog.txt");
+            }
+            else
+            {
+                absolutePath = Path.Combine(Path.GetPathRoot(defaultPath), relativePath);
+            }
 
             //clear out test artifacts
             if (Directory.Exists(Path.GetDirectoryName(defaultPath)))
@@ -103,12 +110,20 @@ namespace HyveLog.UnitTests
         public void TestWritingToConsole()
         {
             var logger = new Logger();
-            
-            using (StringWriter writer = new StringWriter())
+
+            TextWriter stdout = Console.Out;
+            StringWriter sw = new StringWriter();
+            Console.SetOut(sw);
+            try
             {
-                Console.SetOut(writer);
                 logger.Log(errorMessage);
-                Assert.AreEqual(errorMessage + Environment.NewLine, writer.ToString());
+            }
+            finally
+            {
+                Console.SetOut(stdout);
+                string output = sw.ToString();
+                sw.Close();
+                Assert.AreEqual(errorMessage + Environment.NewLine, output);
             }
         }
     }
