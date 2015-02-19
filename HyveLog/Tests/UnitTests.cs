@@ -30,15 +30,16 @@ namespace HyveLog.UnitTests
             //set default relative path, use to set absolute path
             defaultPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Errors\\ErrorLog.txt");
             //should be c:\\ or / in mono
-            int OS = (int)Environment.OSVersion.Platform;
-            if ((OS == 4) || (OS == 6) || (OS == 128))
-            {
-                absolutePath = Path.Combine(Path.GetPathRoot(defaultPath), "errors/errorlog.txt");
-            }
-            else
-            {
-                absolutePath = Path.Combine(Path.GetPathRoot(defaultPath), relativePath);
-            }
+            //int OS = (int)Environment.OSVersion.Platform;
+            //if ((OS == 4) || (OS == 6) || (OS == 128))
+            //{
+            //    absolutePath = Path.Combine(Path.GetPathRoot(defaultPath), "errors/errorlog.txt");
+            //}
+            //else
+            //{
+            //    absolutePath = Path.Combine(Path.GetPathRoot(defaultPath), relativePath);
+            //}
+            absolutePath = Path.Combine(Path.GetDirectoryName(defaultPath),"aboslutePath", "errorLog.txt");
 
             //clear out test artifacts
             if (Directory.Exists(Path.GetDirectoryName(defaultPath)))
@@ -51,7 +52,7 @@ namespace HyveLog.UnitTests
             }
             if (Directory.Exists(Path.GetDirectoryName(absolutePath)))
             {
-                File.Delete(absolutePath);
+                Directory.Delete(Path.GetDirectoryName(absolutePath), true);
             }
             File.Delete(logFile);
         }
