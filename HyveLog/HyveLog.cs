@@ -13,6 +13,7 @@ namespace HyveLog
         private string _logPath = String.Empty;
         private LogTarget _type;
 
+        #region Public Properties
         public LogTarget LoggingMode 
         { 
             get 
@@ -46,7 +47,8 @@ namespace HyveLog
                 _logPath = Path.Combine(Path.GetDirectoryName(_logPath), value);
             }
         }
-
+        #endregion
+        
         /// <summary>
         /// Initialize HyveLog and let it determine where to log.
         /// </summary>
@@ -84,7 +86,6 @@ namespace HyveLog
 
         public void Log(String Message)
         {
-            //approach 1, switch based on enum?
             switch (_type)
             {
                 case LogTarget.Console:

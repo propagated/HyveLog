@@ -17,15 +17,13 @@ namespace HyveLog.UnitTests
     internal class TestHyveLog
     {
         const String errorMessage = "This is a test error message.";
-
         const String relativePath = @"errors\errorlog.txt";
-        
-        String defaultPath;
-        //String absolutePath = @"C:\Errors\errorlog.txt";
-        String absolutePath;
         const String logFile = "errorlog.txt";
         const String bothPath = "bothLog.txt";
 
+        String defaultPath;
+        String absolutePath;
+ 
         [TestFixtureSetUp, Description("")]
         public void InitTestFixture()
         {
