@@ -30,17 +30,8 @@ namespace HyveLog.UnitTests
         public void InitTestFixture()
         {
             //set default relative path, use to set absolute path
-            defaultPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Errors\\ErrorLog.txt");
-            //should be c:\\ or / in mono
-            if (Path.GetPathRoot(defaultPath).Equals('/'))
-            {
-                absolutePath = Path.Combine(Path.GetPathRoot(defaultPath), "errors/errorlog.txt");
-            }
-            else
-            {
-                absolutePath = Path.Combine(Path.GetPathRoot(defaultPath), relativePath);
-            }
-
+            defaultPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Errors", "ErrorLog.txt");
+            absolutePath = Path.Combine(Path.GetDirectoryName(defaultPath), "aboslutePath", "errorLog.txt");
             //clear out test artifacts
             if (Directory.Exists(Path.GetDirectoryName(defaultPath)))
             {
