@@ -9,7 +9,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
-    <releaseNotes>Update Test dependencies, not needed for release build.</releaseNotes>
+    <releaseNotes>Rebuild HyveLog nuget package using release build to drop nunit requirement.</releaseNotes>
     <tags>WindowsService ConsoleApplication</tags>
   </metadata>
 </package>
