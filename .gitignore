@@ -5,3 +5,4 @@ HyveLog/obj
 HyveLogTest
 packages
 *.nupkg
+*.vs
