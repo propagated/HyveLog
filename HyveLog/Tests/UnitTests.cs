@@ -24,7 +24,7 @@ namespace HyveLog.UnitTests
         String defaultPath;
         String absolutePath;
  
-        [TestFixtureSetUp, Description("")]
+        [OneTimeSetUp, Description("Onetime Run before all tests")]
         public void InitTestFixture()
         {
             //set default relative path, use to set absolute path
@@ -46,7 +46,7 @@ namespace HyveLog.UnitTests
             File.Delete(logFile);
             File.Delete(bothPath);
         }
-        [TestFixtureTearDown]
+        [OneTimeTearDown]
         public void EndAllTests()
         {
             //fires after all tests are complete

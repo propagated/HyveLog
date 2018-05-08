@@ -2,7 +2,7 @@ language: csharp
 solution: HyveLog.sln
 install:
   - nuget restore HyveLog.sln
-  - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+  - nuget install NUnit.Runners -Version 3.8.0 -OutputDirectory testrunner
 script:
   - xbuild /p:Configuration=Debug HyveLog.sln
-  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./HyveLog/bin/Debug/HyveLog.dll
+  - mono ./testrunner/NUnit.ConsoleRunner.3.8.0/tools/nunit3-console.exe ./HyveLog/bin/Debug/HyveLog.dll
