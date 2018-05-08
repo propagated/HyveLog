@@ -2,8 +2,7 @@
 *.user
 HyveLog/bin
 HyveLog/obj
-HyveLog/.vs
 HyveLogTest
 packages
 *.nupkg
-
+.vs
