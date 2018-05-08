@@ -5,4 +5,4 @@ install:
   - nuget install NUnit.Runners -Version 3.8.0 -OutputDirectory testrunner
 script:
   - xbuild /p:Configuration=Debug HyveLog.sln
-  - mono ./testrunner/NUnit.Runners.3.8.0/tools/nunit-console.exe ./HyveLog/bin/Debug/HyveLog.dll
+  - mono ./testrunner/NUnit.ConsoleRunner.3.8.0/tools/nunit3-console.exe ./HyveLog/bin/Debug/HyveLog.dll
